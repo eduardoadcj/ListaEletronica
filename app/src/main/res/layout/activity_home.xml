@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorBackground"
+    tools:context="eduardocruz.listaeletronica2.Home">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nova lista"
+        android:id="@+id/button"
+        android:onClick="newLista"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorBackgroundButton"
+        android:textColor="@android:color/white"
+        android:textSize="32px"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="listas salvas"
+        android:id="@+id/button2"
+        android:background="@color/colorBackgroundButton"
+        android:textColor="@android:color/white"
+        android:textSize="32px"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="produtos cadastrados"
+        android:id="@+id/button3"
+        android:background="@color/colorBackgroundButton"
+        android:textColor="@android:color/white"
+        android:textSize="32px"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="instruções"
+        android:id="@+id/button4"
+        android:background="@color/colorBackgroundButton"
+        android:textColor="@android:color/white"
+        android:textSize="32px"
+        android:layout_above="@+id/button5"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="23dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="configuracões"
+        android:id="@+id/button5"
+        android:background="@color/colorBackgroundButton"
+        android:textColor="@android:color/white"
+        android:textSize="32px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
