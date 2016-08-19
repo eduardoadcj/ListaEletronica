@@ -17,8 +17,10 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
     }
 
-    public void newLista(View v){
+    public void newLista(View v){ //metodo responsavel por abrir a lista
 
+
+        //codigo responsavel por abrir um PopUp
         LayoutInflater layoutInflater = LayoutInflater.from(Home.this);
         View promptView = layoutInflater.inflate(R.layout.insert_name_list, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Home.this);
@@ -30,16 +32,22 @@ public class Home extends AppCompatActivity {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
-                        Intent i = new Intent(Home.this, Lista.class);
-                        i.putExtra("nome", editText.getText().toString());
-                        startActivity(i);
+                        //caso o botao Ok seja selecionado
+
+                        Intent i = new Intent(Home.this, Lista.class); //inicia um intent para Lista
+                        i.putExtra("nome", editText.getText().toString()); //pega o valor de texto inserido pelo usuario e o anexa a intent
+                        startActivity(i); //inicia a intent
 
                     }
                 })
                 .setNegativeButton("Cancelar",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
+
+                                //caso o botao cancelar seja selecionado
+
+                                dialog.cancel();//cancelar operacao
+
                             }
                         });
 

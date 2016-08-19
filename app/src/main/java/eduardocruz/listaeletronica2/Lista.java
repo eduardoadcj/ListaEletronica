@@ -18,7 +18,6 @@ public class Lista extends AppCompatActivity {
         flip = (ViewFlipper) findViewById(R.id.viewFlipper);
     }
 
-
     public void nextView(View v){
 
         flip.showNext();
