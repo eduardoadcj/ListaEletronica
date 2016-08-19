@@ -1,4 +1,4 @@
-package eduardocruz.listaeletronica2;
+package eduardocruz.listaeletronica2.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,14 +9,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import eduardocruz.listaeletronica2.R;
 import eduardocruz.listaeletronica2.entidades.Produto;
 
-public class AdapterListView extends BaseAdapter {
+public class ProdutoAdapterListView extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private List<Produto> itens;
 
-    public AdapterListView(Context context, List<Produto> itens) {
+    public ProdutoAdapterListView(Context context, List<Produto> itens) {
         this.itens = itens;
         mInflater = LayoutInflater.from(context);
     }
@@ -52,12 +53,14 @@ public class AdapterListView extends BaseAdapter {
 
         Produto item = itens.get(position);
         itemHolder.nome.setText(item.getNome());
+        itemHolder.id = item.getId();
 
         return view;
     }
 
     private class ItemSuporte {
 
+        Integer id;
         TextView nome;
 
     }

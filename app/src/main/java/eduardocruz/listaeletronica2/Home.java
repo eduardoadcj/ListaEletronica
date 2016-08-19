@@ -56,5 +56,12 @@ public class Home extends AppCompatActivity {
 
     }
 
+    public void listarProdutos(View v){
+
+        Intent i = new Intent(Home.this, ListaProduto.class);
+        startActivity(i);
+
+    }
+
 
 }
