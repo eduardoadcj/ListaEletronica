@@ -3,14 +3,12 @@ package eduardocruz.listaeletronica2.entidades;
 public class Produto {
 
     private Integer id;
-
-
-
     private String nome;
     private Double quantidade;
     private Double preco;
     private String descricao;
-    private boolean selected;
+
+
 
     public Integer getId() {
         return id;
@@ -42,14 +40,6 @@ public class Produto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public boolean isSelected() {
-        return selected;
-    }
-
-    public void setSelected(boolean selected) {
-        this.selected = selected;
     }
 
     public Double getQuantidade() {
