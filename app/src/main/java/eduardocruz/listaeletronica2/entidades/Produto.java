@@ -4,10 +4,8 @@ public class Produto {
 
     private Integer id;
     private String nome;
-    private Double quantidade;
     private Double preco;
     private String descricao;
-
 
 
     public Integer getId() {
@@ -42,11 +40,4 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Double getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Double quantidade) {
-        this.quantidade = quantidade;
-    }
 }

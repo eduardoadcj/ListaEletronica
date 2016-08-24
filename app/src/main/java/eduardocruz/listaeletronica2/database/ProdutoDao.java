@@ -25,11 +25,10 @@ public class ProdutoDao {
 
         String nome = p.getNome();
         Double preco = p.getPreco();
-        Double quantidade = p.getQuantidade();
         String descricao = p.getDescricao();
 
-        String sql = "INSERT INTO produto (nome,preco,quantidade,descricao) VALUES ("+nome+","
-                +preco+","+quantidade+","+descricao+")";
+        String sql = "INSERT INTO produto(nome,preco,descricao) VALUES ("+nome+","
+                +preco+","+descricao+")";
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL(sql);
@@ -51,8 +50,7 @@ public class ProdutoDao {
                 p.setId(cursor.getInt(1));
                 p.setNome(cursor.getString(2));
                 p.setPreco(cursor.getDouble(3));
-                p.setQuantidade(cursor.getDouble(4));
-                p.setDescricao(cursor.getString(5));
+                p.setDescricao(cursor.getString(4));
 
                 list.add(p);
 

@@ -7,15 +7,29 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static String DB_NAME = "listDataBase";
+    private static String DB_NAME = "ListaEletronicaDataBase";
     private static int DV_VERSION = 1;
 
     private static String TABLE_PRODUTO = "CREATE TABLE produto(" +
+            "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "nome TEXT," +
+            "preco NUM," +
+            "descricao TEXT" +
+            ")";
+
+    private static String TABLE_LISTA = "CREATE TABLE lista(" +
             "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
             "nome TEXT NOT NULL," +
-            "preco NUM" +
+            "total NUM," +
+            ")";
+
+    private static String TABLE_ITENS_LISTA = "CREATE TABLE itenslista(" +
+            "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "id_lista INTEGER NOT NULL," +
+            "FOREIGN KEY(id_lista) REFERENCES lista(id)," +
+            "id_produto INTEGER NOTNULL," +
+            "FOREIGN KEY(id_produto) REFERENCES produto(id)," +
             "quantidade NUM" +
-            "descricao TEXT" +
             ")";
 
     public DBHelper(Context context) {
@@ -28,7 +42,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
     }
 }
