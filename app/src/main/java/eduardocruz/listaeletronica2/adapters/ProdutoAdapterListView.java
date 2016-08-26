@@ -43,24 +43,21 @@ public class ProdutoAdapterListView extends BaseAdapter {
             view = mInflater.inflate(R.layout.item_list, null);
 
             itemHolder = new ItemSuporte();
-            itemHolder.nome = ((TextView) view.findViewById(R.id.nomeItem));
+            itemHolder.nome = ((TextView) view.findViewById(R.id.nomeItem_itemAdapter));
 
             view.setTag(itemHolder);
         } else {
-
             itemHolder = (ItemSuporte) view.getTag();
         }
 
         Produto item = itens.get(position);
         itemHolder.nome.setText(item.getNome());
-        itemHolder.id = item.getId();
 
         return view;
     }
 
     private class ItemSuporte {
 
-        Integer id;
         TextView nome;
 
     }

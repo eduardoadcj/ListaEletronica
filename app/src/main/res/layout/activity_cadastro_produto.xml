@@ -96,4 +96,25 @@
         android:layout_alignParentEnd="true"
         android:onClick="salvar"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Link:"
+        android:id="@+id/textView8"
+        android:layout_below="@+id/cadastroProduto_descricao"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="3dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cadastroProduto_link"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/cadastroProduto_descricao"
+        android:layout_alignEnd="@+id/cadastroProduto_descricao" />
+
 </RelativeLayout>

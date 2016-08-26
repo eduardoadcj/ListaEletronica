@@ -6,21 +6,13 @@
     android:padding="5sp">
 
     <TextView
-        android:id="@+id/nomeItem"
+        android:id="@+id/nomeItem_itemAdapter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5sp"
         android:gravity="left"
         android:text="Nome do produto"
         android:textColor="#FF000000"
-        android:textSize="15dp"/>
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="16"
-        android:layout_row="0"
-        android:gravity="right" />
+        android:textSize="18dp"/>
 
 </GridLayout>

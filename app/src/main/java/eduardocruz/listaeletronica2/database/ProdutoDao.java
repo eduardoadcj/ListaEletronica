@@ -1,5 +1,6 @@
 package eduardocruz.listaeletronica2.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,28 +11,40 @@ import java.util.List;
 import eduardocruz.listaeletronica2.entidades.Produto;
 
 public class ProdutoDao {
-
-    private static DBHelper dbHelper = null;
+    private SQLiteDatabase db;
+    private DBHelper dbHelper;
 
     public ProdutoDao(Context context) {
 
-        if(dbHelper == null){
-            dbHelper = new DBHelper(context);
-        }
+        dbHelper = new DBHelper(context);
 
     }
 
-    public void salvar(Produto p){
+    public String salvar(Produto p){
+
+        ContentValues valores;
+        long result;
 
         String nome = p.getNome();
         Double preco = p.getPreco();
         String descricao = p.getDescricao();
+        String link = p.getLink();
 
-        String sql = "INSERT INTO produto(nome,preco,descricao) VALUES ("+nome+","
-                +preco+","+descricao+")";
+        db = dbHelper.getWritableDatabase();
+        valores = new ContentValues();
+        valores.put(DBHelper.PRODUTO_NOME,nome);
+        valores.put(DBHelper.PRODUTO_PRECO,preco.toString());
+        valores.put(DBHelper.PRODUTO_DESCRICAO,descricao);
+        valores.put(DBHelper.PRODUTO_LINK,link);
+        result = db.insert(DBHelper.TABLE_PRODUTO,null,valores);
+        db.close();
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.execSQL(sql);
+        if(result == -1){
+            return "Erro ao inserir registro";
+        }else{
+            return "Registro inserido com sucesso";
+        }
+
     }
 
     public List<Produto> listar(){

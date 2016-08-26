@@ -7,15 +7,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static String DB_NAME = "ListaEletronicaDataBase";
-    private static int DV_VERSION = 1;
+    private static final String NOME_BANCO = "ListaEletronicaDataBase";
+    private static final int VERSAO = 1;
 
-    private static String TABLE_PRODUTO = "CREATE TABLE produto(" +
-            "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "nome TEXT," +
-            "preco NUM," +
-            "descricao TEXT" +
-            ")";
+    public static final String TABLE_PRODUTO = "produto";
+    public static final String PRODUTO_ID = "id";
+    public static final String PRODUTO_NOME = "nome";
+    public static final String PRODUTO_PRECO = "preco";
+    public static final String PRODUTO_DESCRICAO = "descricao";
+    public static final String PRODUTO_LINK = "link";
 
     private static String TABLE_LISTA = "CREATE TABLE lista(" +
             "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
@@ -33,15 +33,27 @@ public class DBHelper extends SQLiteOpenHelper {
             ")";
 
     public DBHelper(Context context) {
-        super(context, DB_NAME, null, DV_VERSION);
+        super(context, NOME_BANCO, null, VERSAO);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_PRODUTO);
+        String sql = "CREATE TABLE "+TABLE_PRODUTO+"("
+                +PRODUTO_ID+" integer not null primary key autoincrement,"
+                +PRODUTO_NOME+" text,"
+                +PRODUTO_PRECO+" num,"
+                +PRODUTO_DESCRICAO+" text,"
+                +PRODUTO_LINK+" text"+
+                ")";
+
+        db.execSQL(sql);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db,int oldVersion, int newVersion) {
+
+        db.execSQL("DROP TABLE IF EXISTS" + TABLE_PRODUTO);
+        onCreate(db);
+
     }
 }

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import eduardocruz.listaeletronica2.database.ProdutoDao;
 import eduardocruz.listaeletronica2.entidades.Produto;
@@ -13,6 +14,7 @@ public class CadastroProduto extends AppCompatActivity {
     EditText txtNome;
     EditText txtPreco;
     EditText txtDescricao;
+    EditText txtLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class CadastroProduto extends AppCompatActivity {
         txtNome = (EditText) findViewById(R.id.cadastroProduto_nome);
         txtPreco = (EditText) findViewById(R.id.cadastroProduto_preco);
         txtDescricao = (EditText) findViewById(R.id.cadastroProduto_descricao);
+        txtLink = (EditText) findViewById(R.id.cadastroProduto_link);
 
     }
 
@@ -32,8 +35,11 @@ public class CadastroProduto extends AppCompatActivity {
         p.setNome(txtNome.getText().toString());
         p.setPreco(Double.parseDouble(txtPreco.getText().toString()));
         p.setDescricao(txtDescricao.getText().toString());
+        p.setLink(txtLink.getText().toString());
         ProdutoDao pd = new ProdutoDao(this);
-        pd.salvar(p);
+        String resultado = pd.salvar(p);
+
+        Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
 
     }
 
