@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import eduardocruz.listaeletronica2.R;
@@ -15,9 +16,9 @@ import eduardocruz.listaeletronica2.entidades.Produto;
 public class ProdutoAdapterListView extends BaseAdapter {
 
     private LayoutInflater mInflater;
-    private List<Produto> itens;
+    private ArrayList<Produto> itens;
 
-    public ProdutoAdapterListView(Context context, List<Produto> itens) {
+    public ProdutoAdapterListView(Context context, ArrayList<Produto> itens) {
         this.itens = itens;
         mInflater = LayoutInflater.from(context);
     }

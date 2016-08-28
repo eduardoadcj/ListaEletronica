@@ -47,29 +47,39 @@ public class ProdutoDao {
 
     }
 
-    public List<Produto> listar(){
+    public ArrayList<Produto> listar() throws Exception{
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String sql = "SELECT * FROM produto";
         Cursor cursor = db.rawQuery(sql,null);
-        List<Produto> list = null;
+        ArrayList<Produto> list = new ArrayList();
 
-        if(cursor != null && cursor.moveToFirst()){
-            list = new ArrayList();
 
-            do{
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+
+            for (int i =0;i<cursor.getCount();i++){
                 Produto p = new Produto();
 
-                p.setId(cursor.getInt(1));
-                p.setNome(cursor.getString(2));
-                p.setPreco(cursor.getDouble(3));
-                p.setDescricao(cursor.getString(4));
-
+                p.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                p.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+                p.setPreco(cursor.getDouble(cursor.getColumnIndex("preco")));
+                p.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
+                p.setLink(cursor.getString(cursor.getColumnIndex("link")));
                 list.add(p);
 
-            }while(cursor.moveToNext());
+                cursor.moveToNext();
+            }
 
         }
+
+        for(Produto p : list){
+
+            System.out.println(p.getId()+" - "+p.getNome());
+
+        }
+
+
         return list;
     }
 

@@ -15,10 +15,27 @@ import eduardocruz.listaeletronica2.entidades.Produto;
 
 public class ListaProduto extends AppCompatActivity {
 
+    ArrayList<Produto> list = new ArrayList();
+    ListView produtoListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produto);
+        produtoListView = (ListView) findViewById(R.id.listView_lista_produto);
+
+        ProdutoDao pd = new ProdutoDao(getApplicationContext());
+
+
+        try {
+
+            list = pd.listar();
+            ProdutoAdapterListView adapter = new ProdutoAdapterListView(getApplicationContext(),list);
+            produtoListView.setAdapter(adapter);
+
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void cadastrarProduto(View v){
