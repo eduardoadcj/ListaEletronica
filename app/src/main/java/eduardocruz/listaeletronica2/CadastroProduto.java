@@ -1,5 +1,6 @@
 package eduardocruz.listaeletronica2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,6 +41,9 @@ public class CadastroProduto extends AppCompatActivity {
         String resultado = pd.salvar(p);
 
         Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+
+        Intent i = new Intent(CadastroProduto.this,ListaProduto.class);
+        startActivity(i);
 
     }
 

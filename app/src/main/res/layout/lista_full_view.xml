@@ -20,7 +20,9 @@
         android:onClick="previousView"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/button9"
+        android:layout_toStartOf="@+id/button9" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,16 +40,7 @@
         android:text="Salvar"
         android:id="@+id/button9"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/button7"
-        android:layout_toEndOf="@+id/button7" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compartilhar"
-        android:id="@+id/button10"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/button9"
-        android:layout_toEndOf="@+id/button9" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
