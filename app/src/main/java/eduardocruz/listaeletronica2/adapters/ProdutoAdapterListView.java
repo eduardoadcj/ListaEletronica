@@ -45,7 +45,7 @@ public class ProdutoAdapterListView extends BaseAdapter {
 
             itemHolder = new ItemSuporte();
             itemHolder.nome = ((TextView) view.findViewById(R.id.nomeItem_itemAdapter));
-
+            itemHolder.preco = ((TextView) view.findViewById(R.id.precoItem_itemAdapter));
             view.setTag(itemHolder);
         } else {
             itemHolder = (ItemSuporte) view.getTag();
@@ -53,13 +53,15 @@ public class ProdutoAdapterListView extends BaseAdapter {
 
         Produto item = itens.get(position);
         itemHolder.nome.setText(item.getNome());
-
+        itemHolder.preco.setText("R$: "+item.getPreco());
         return view;
+
     }
 
     private class ItemSuporte {
 
         TextView nome;
+        TextView preco;
 
     }
 

@@ -13,6 +13,24 @@
         android:gravity="left"
         android:text="Nome do produto"
         android:textColor="#FF000000"
-        android:textSize="18dp"/>
+        android:textSize="20dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10sp"
+        android:layout_row="0"
+        android:layout_column="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Preco"
+        android:textColor="#9C9C9C"
+        android:id="@+id/precoItem_itemAdapter"
+        android:layout_row="0"
+        android:layout_column="3"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10sp"
+        android:textSize="17dp" />
 
 </GridLayout>
