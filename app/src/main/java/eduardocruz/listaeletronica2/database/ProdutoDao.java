@@ -83,6 +83,42 @@ public class ProdutoDao {
         return list;
     }
 
+    public void excluir(Integer id){
+
+        System.out.println("Esse daki q é o id ó:"+id);
+        db = dbHelper.getWritableDatabase();
+        String where = "id="+id;
+        db.delete("produto",where,null);
+        db.close();
+
+    }
+
+    public void editar(Produto p){
+
+        ContentValues valores;
+        String where;
+        String nome = p.getNome();
+        Double preco = p.getPreco();
+        String descricao = p.getDescricao();
+        String link = p.getLink();
+
+
+        db = dbHelper.getWritableDatabase();
+
+        where = "id="+p.getId();
+
+        valores = new ContentValues();
+
+        valores.put(DBHelper.PRODUTO_NOME,nome);
+        valores.put(DBHelper.PRODUTO_PRECO,preco.toString());
+        valores.put(DBHelper.PRODUTO_DESCRICAO,descricao);
+        valores.put(DBHelper.PRODUTO_LINK,link);
+
+        db.update("produto",valores,where,null);
+        db.close();
+
+    }
+
 
     //https://www.youtube.com/watch?v=B5CeH1EZzi4
 
