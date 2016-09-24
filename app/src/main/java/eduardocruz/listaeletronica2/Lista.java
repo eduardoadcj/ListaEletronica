@@ -37,7 +37,7 @@ public class Lista extends AppCompatActivity {
 
         pesqProduto = (ListView) findViewById(R.id.lista_listViewPesqProduto);
 
-        upDateList();
+        upDateFullList();
 
     }
 
@@ -54,7 +54,7 @@ public class Lista extends AppCompatActivity {
     }
 
 
-    private void upDateList(){
+    private void upDateFullList(){
         try{
 
             ProdutoDao pd = new ProdutoDao(getApplicationContext());
@@ -66,7 +66,6 @@ public class Lista extends AppCompatActivity {
         }catch(Exception e){
 
         }
-
     }
 
 }
