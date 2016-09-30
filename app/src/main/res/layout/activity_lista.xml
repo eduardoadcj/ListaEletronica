@@ -15,8 +15,8 @@
         android:id="@+id/viewFlipper" >
 
 
-        <include layout="@layout/lista_search_product" />
-        <include layout="@layout/lista_full_view" />
+        <include layout="@layout/activity_lista_flipview_fulllist" />
+        <include layout="@layout/activity_lista_flipview_itens" />
 
     </ViewFlipper>
 </RelativeLayout>

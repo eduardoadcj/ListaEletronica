@@ -10,24 +10,28 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import eduardocruz.listaeletronica2.R;
+import eduardocruz.listaeletronica2.entidades.ItensLista;
 import eduardocruz.listaeletronica2.entidades.Produto;
 
-public class ProdutoAdapterListView extends BaseAdapter {
+public class ItensProdutoAdapterListView extends BaseAdapter {
+
 
     private LayoutInflater mInflater;
-    private ArrayList<Produto> itens;
+    private ArrayList<Produto> produtos;
+    private ArrayList<ItensLista> itensLista;
 
-    public ProdutoAdapterListView(Context context, ArrayList<Produto> itens) {
-        this.itens = itens;
+    public ItensProdutoAdapterListView(Context context, ArrayList<Produto> produtos, ArrayList<ItensLista> itensLista) {
+        this.produtos = produtos;
+        this.itensLista = itensLista;
         mInflater = LayoutInflater.from(context);
     }
 
     public int getCount() {
-        return itens.size();
+        return itensLista.size();
     }
 
-    public Produto getItem(int position) {
-        return itens.get(position);
+    public ItensLista getItem(int position) {
+        return itensLista.get(position);
     }
 
     public long getItemId(int position) {
@@ -46,13 +50,16 @@ public class ProdutoAdapterListView extends BaseAdapter {
             itemHolder.nome = ((TextView) view.findViewById(R.id.nomeItem_itemAdapter));
             itemHolder.preco = ((TextView) view.findViewById(R.id.precoItem_itemAdapter));
             view.setTag(itemHolder);
+
         } else {
             itemHolder = (ItemSuporte) view.getTag();
         }
 
-        Produto item = itens.get(position);
-        itemHolder.nome.setText(item.getNome());
-        itemHolder.preco.setText("R$: "+item.getPreco());
+        ItensLista item = itensLista.get(position);
+        Produto p = searchProduto(item);
+
+        itemHolder.nome.setText(p.getNome());
+        itemHolder.preco.setText(item.getQuantidade()+" X R$: "+p.getPreco());
         return view;
 
     }
@@ -64,6 +71,20 @@ public class ProdutoAdapterListView extends BaseAdapter {
 
     }
 
-    //http://www.devmedia.com.br/android-criando-um-listview-customizado/26260
+    private Produto searchProduto(ItensLista item){
+
+        Produto p = new Produto();
+        for(Produto produto : produtos){
+
+            if(item.getId_produto() == produto.getId()){
+                p = produto;
+            }
+
+        }
+
+        return p;
+
+    }
+
 
 }

@@ -22,7 +22,7 @@ public class Home extends AppCompatActivity {
 
         //codigo responsavel por abrir um PopUp
         LayoutInflater layoutInflater = LayoutInflater.from(Home.this);
-        View promptView = layoutInflater.inflate(R.layout.insert_name_list, null);
+        View promptView = layoutInflater.inflate(R.layout.activity_home_insert_name, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Home.this);
         alertDialogBuilder.setView(promptView);
 

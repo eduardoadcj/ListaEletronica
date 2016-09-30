@@ -29,7 +29,7 @@ public class ListaProduto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_produto);
+        setContentView(R.layout.activity_listaproduto);
         produtoListView = (ListView) findViewById(R.id.listView_lista_produto);
 
 
@@ -52,11 +52,11 @@ public class ListaProduto extends AppCompatActivity {
 
 
                     LayoutInflater layoutInflater = LayoutInflater.from(ListaProduto.this);
-                    View promptView = layoutInflater.inflate(R.layout.info_produto, null);
+                    View promptView = layoutInflater.inflate(R.layout.activity_listaproduto_info, null);
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ListaProduto.this);
                     alertDialogBuilder.setView(promptView);
 
-                    final TextView nome = (TextView) promptView.findViewById(R.id.txt_InfoProduto_nome);
+                    final TextView nome = (TextView) promptView.findViewById(R.id.txt_nome);
                     final TextView preco = (TextView) promptView.findViewById(R.id.txt_InfoProduto_preco);
                     final TextView descricao = (TextView) promptView.findViewById(R.id.txt_InfoProduto_descricao);
 
@@ -119,7 +119,7 @@ public class ListaProduto extends AppCompatActivity {
                     final String link = p.getLink();
 
                     LayoutInflater layoutInflater = LayoutInflater.from(ListaProduto.this);
-                    View promptView = layoutInflater.inflate(R.layout.item_edit, null);
+                    View promptView = layoutInflater.inflate(R.layout.activity_listaproduto_edit, null);
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ListaProduto.this);
                     alertDialogBuilder.setView(promptView);
 

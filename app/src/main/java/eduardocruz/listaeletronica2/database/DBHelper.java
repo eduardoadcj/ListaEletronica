@@ -40,24 +40,26 @@ public class DBHelper extends SQLiteOpenHelper {
                 +PRODUTO_PRECO+" num,"
                 +PRODUTO_DESCRICAO+" text,"
                 +PRODUTO_LINK+" text"+
-                ");";
+                ")";
 
         String sql2 = "CREATE TABLE "+TABLE_LISTAS+"("
                 +LISTAS_ID+" integer not null primary key autoincrement,"
                 +LISTAS_NOME+" text,"
                 +LISTAS_TOTAL+" num"
-                +");";
+                +")";
 
         String sql3 = "CREATE TABLE "+TABLE_ITENS_LISTA+"("
                 +ITENS_LISTA_ID+" integer not null primary key autoincrement,"
-                +ITENS_LISTA_ID_LISTA+" integer not null,"
-                +ITENS_LISTA_ID_PRODUTO+" integer not null,"
-                +ITENS_LISTA_QUANTIDADE+" num"
-                +"foreign key ("+ITENS_LISTA_ID_LISTA+") references"+TABLE_LISTAS+"("+LISTAS_ID+"),"
-                +"foreign key ("+ITENS_LISTA_ID_PRODUTO+") references"+TABLE_PRODUTO+"("+PRODUTO_ID+"),"
+                +ITENS_LISTA_ID_LISTA+" integer,"
+                +ITENS_LISTA_ID_PRODUTO+" integer,"
+                +ITENS_LISTA_QUANTIDADE+" num,"
+                +"foreign key ("+ITENS_LISTA_ID_LISTA+") references "+TABLE_LISTAS+"("+LISTAS_ID+"),"
+                +"foreign key ("+ITENS_LISTA_ID_PRODUTO+") references "+TABLE_PRODUTO+"("+PRODUTO_ID+")"
                 +")";
 
-        db.execSQL(sql+sql2+sql3);
+        db.execSQL(sql);
+        db.execSQL(sql2);
+        db.execSQL(sql3);
     }
 
     @Override

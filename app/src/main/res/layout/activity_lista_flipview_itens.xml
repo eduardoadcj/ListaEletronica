@@ -6,7 +6,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView2"
+        android:id="@+id/lista_listViewItens"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="50dp"
@@ -31,7 +31,9 @@
         android:text="Nome da lista"
         android:id="@+id/txtName_list"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp" />
 
     <Button
@@ -42,5 +44,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="R$:"
+        android:id="@+id/txtTotal_list"
+        android:layout_above="@+id/lista_listViewItens"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp" />
 
 </RelativeLayout>

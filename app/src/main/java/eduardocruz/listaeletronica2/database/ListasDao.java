@@ -17,10 +17,10 @@ public class ListasDao {
 
     }
 
-    public String salvar(Listas l){
+    public Listas salvar(Listas l){
 
         ContentValues valores;
-        long result;
+        Long result;
 
         String nome = l.getNome();
         Double total = l.getTotal();
@@ -32,11 +32,9 @@ public class ListasDao {
         result = db.insert(DBHelper.TABLE_LISTAS,null,valores);
         db.close();
 
-        if(result == -1){
-            return "Erro ao inserir registro";
-        }else{
-            return "Registro inserido com sucesso";
-        }
+        l.setId(result.intValue());
+
+        return l;
 
     }
 
