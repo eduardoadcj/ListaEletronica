@@ -130,29 +130,12 @@ public class Lista extends AppCompatActivity {
 
                     AlertDialog alert = alertDialogBuilder.create();
                     alert.show();
-
-
                 }
 
             });
-
-            itensProduto.setClickable(true);
-            itensProduto.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-
-                @Override
-                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int item, long l) {
-
-
-                    return true;
-
-                }
-
-            });
-
-
 
         }catch(Exception e){
-
+            System.err.println("---------------------deu erro aqui");
         }
 
         //----------fim configuracao de listview -------------
