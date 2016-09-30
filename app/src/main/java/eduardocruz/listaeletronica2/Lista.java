@@ -13,7 +13,9 @@ import android.widget.ViewSwitcher;
 import java.util.ArrayList;
 
 import eduardocruz.listaeletronica2.adapters.ProdutoAdapterListView;
+import eduardocruz.listaeletronica2.database.ItensListaDao;
 import eduardocruz.listaeletronica2.database.ProdutoDao;
+import eduardocruz.listaeletronica2.entidades.ItensLista;
 import eduardocruz.listaeletronica2.entidades.Produto;
 
 public class Lista extends AppCompatActivity {
@@ -24,6 +26,7 @@ public class Lista extends AppCompatActivity {
     ListView pesqProduto;
     static ProdutoAdapterListView adapter;
     ArrayList<Produto> fullList= new ArrayList();
+    ArrayList<ItensLista> list = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,14 @@ public class Lista extends AppCompatActivity {
         }catch(Exception e){
 
         }
+    }
+
+    public void saveLista(View v){
+
+        ItensListaDao ild = new ItensListaDao(this.getApplicationContext());
+
+
+
     }
 
 }
