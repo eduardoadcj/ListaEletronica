@@ -59,7 +59,7 @@ public class ItensProdutoAdapterListView extends BaseAdapter {
         Produto p = searchProduto(item);
 
         itemHolder.nome.setText(p.getNome());
-        itemHolder.preco.setText(item.getQuantidade()+" X R$: "+p.getPreco());
+        itemHolder.preco.setText(item.getQuantidade()+" x R$: "+p.getPreco());
         return view;
 
     }

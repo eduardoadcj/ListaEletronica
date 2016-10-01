@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -38,8 +40,8 @@ public class Lista extends AppCompatActivity {
     ViewFlipper flip;
     ListView pesqProduto;
     ListView itensProduto;
-    static ProdutoAdapterListView adapterFullList;
-    static ItensProdutoAdapterListView adapterItensList;
+    ProdutoAdapterListView adapterFullList;
+    ItensProdutoAdapterListView adapterItensList;
     ArrayList<Produto> fullList= new ArrayList();
     ArrayList<ItensLista> itensList= new ArrayList();
 
@@ -114,7 +116,6 @@ public class Lista extends AppCompatActivity {
 
                                     }
 
-
                                 }
                             })
                             .setNegativeButton("Fechar",
@@ -135,7 +136,7 @@ public class Lista extends AppCompatActivity {
             });
 
         }catch(Exception e){
-            System.err.println("---------------------deu erro aqui");
+
         }
 
         //----------fim configuracao de listview -------------
@@ -173,7 +174,7 @@ public class Lista extends AppCompatActivity {
         try{
 
             this.adapterItensList = new ItensProdutoAdapterListView(getApplicationContext(),fullList,itensList);
-            pesqProduto.setAdapter(adapterItensList);
+            itensProduto.setAdapter(adapterItensList);
 
         }catch(Exception e){
 
