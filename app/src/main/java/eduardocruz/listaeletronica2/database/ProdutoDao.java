@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +83,42 @@ public class ProdutoDao {
 
         return list;
     }
+
+    public ArrayList<Produto> pesquisar(String nome) throws Exception{
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "SELECT * FROM produto WHERE nome LIKE('%"+nome+"%')";
+        Cursor cursor = db.rawQuery(sql,null);
+        ArrayList<Produto> list = new ArrayList();
+
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+
+            for (int i =0;i<cursor.getCount();i++){
+                Produto p = new Produto();
+
+                p.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                p.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+                p.setPreco(cursor.getDouble(cursor.getColumnIndex("preco")));
+                p.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
+                p.setLink(cursor.getString(cursor.getColumnIndex("link")));
+                list.add(p);
+
+                cursor.moveToNext();
+            }
+
+        }
+
+        for(Produto p : list){
+
+            System.out.println(p.getId()+" - "+p.getNome());
+
+        }
+
+        return list;
+    }
+
+
 
     public void excluir(Integer id){
 

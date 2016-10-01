@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -36,6 +37,7 @@ public class Lista extends AppCompatActivity {
     Double listTotal = 0.d;
     TextView valorTotal;
     ArrayList<ItensLista> list = new ArrayList();
+    EditText campoPesquisa;
 
     ViewFlipper flip;
     ListView pesqProduto;
@@ -57,10 +59,19 @@ public class Lista extends AppCompatActivity {
         upDateListTotal(0.d);
         Intent i = getIntent();
         String listName = i.getStringExtra("nome");
-
         nameList.setText(listName);
-
         createLista(listName);
+        campoPesquisa = (EditText) findViewById(R.id.lista_editTextPesqProduto);
+
+        campoPesquisa.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+
+                upDateFullListByName(campoPesquisa.getText().toString());
+
+                return false;
+            }
+        });
 
         //----------inicio configuracao de listview -------------
 
@@ -168,6 +179,22 @@ public class Lista extends AppCompatActivity {
         }catch(Exception e){
 
         }
+    }
+
+    private void upDateFullListByName(String nome){
+
+        try{
+
+            ProdutoDao pd = new ProdutoDao(getApplicationContext());
+            this.fullList = new ArrayList();
+            this.fullList = pd.pesquisar(nome);
+            this.adapterFullList = new ProdutoAdapterListView(getApplicationContext(),fullList);
+            pesqProduto.setAdapter(adapterFullList);
+
+        }catch(Exception e){
+
+        }
+
     }
 
     private void upDateItensList(){
