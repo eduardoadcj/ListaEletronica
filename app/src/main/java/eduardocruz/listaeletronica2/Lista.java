@@ -101,7 +101,7 @@ public class Lista extends AppCompatActivity {
                     final TextView preco = (TextView) promptView.findViewById(R.id.txt_preco);
                     final TextView descricao = (TextView) promptView.findViewById(R.id.txt_descricao);
                     final EditText quantidade = (EditText) promptView.findViewById(R.id.edittext_quantidade);
-
+                    quantidade.setText("1");
                     nome.setText(p.getNome());
                     preco.setText("Preço: "+p.getPreco()+" R$");
                     descricao.setText("Descrição: "+p.getDescricao());
@@ -146,9 +146,49 @@ public class Lista extends AppCompatActivity {
 
             });
 
+            itensProduto.setClickable(true);
+            itensProduto.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    final int item = i;
+
+                    LayoutInflater layoutInflater = LayoutInflater.from(Lista.this);
+                    View promptView = layoutInflater.inflate(R.layout.activity_lista_itens_remove, null);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Lista.this);
+                    alertDialogBuilder.setView(promptView);
+
+                    AlertDialog.Builder fechar = alertDialogBuilder.setCancelable(false)
+                            .setPositiveButton("não", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    dialog.cancel();
+
+                                }
+                            })
+                            .setNegativeButton("sim",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+
+                                            itensList.remove(item);
+                                            upDateItensList();
+
+                                        }
+                                    });
+
+                    AlertDialog alert = alertDialogBuilder.create();
+                    alert.show();
+
+                    return true;
+                }
+
+            });
+
+
         }catch(Exception e){
 
         }
+
 
         //----------fim configuracao de listview -------------
     }
