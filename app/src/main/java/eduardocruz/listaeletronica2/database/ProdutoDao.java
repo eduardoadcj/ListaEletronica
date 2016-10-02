@@ -80,7 +80,7 @@ public class ProdutoDao {
 
         }
 
-
+        db.close();
         return list;
     }
 
@@ -115,6 +115,7 @@ public class ProdutoDao {
 
         }
 
+        db.close();
         return list;
     }
 

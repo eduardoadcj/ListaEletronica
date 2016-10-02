@@ -38,4 +38,25 @@ public class ListasDao {
 
     }
 
+    public void editar(Listas l){
+
+        ContentValues valores;
+        String where;
+        String nome = l.getNome();
+        Double total = l.getTotal();
+
+        db = dbHelper.getWritableDatabase();
+
+        where = "id="+l.getId();
+
+        valores = new ContentValues();
+
+        valores.put(DBHelper.LISTAS_NOME,nome);
+        valores.put(DBHelper.LISTAS_TOTAL,total.toString());
+
+        db.update("listas",valores,where,null);
+        db.close();
+
+    }
+
 }

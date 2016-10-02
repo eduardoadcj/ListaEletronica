@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 import eduardocruz.listaeletronica2.adapters.ItensProdutoAdapterListView;
 import eduardocruz.listaeletronica2.adapters.ProdutoAdapterListView;
+import eduardocruz.listaeletronica2.database.ItensListaDao;
 import eduardocruz.listaeletronica2.database.ListasDao;
 import eduardocruz.listaeletronica2.database.ProdutoDao;
 import eduardocruz.listaeletronica2.entidades.ItensLista;
@@ -170,6 +171,10 @@ public class Lista extends AppCompatActivity {
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
 
+                                            ItensLista il = itensList.get(item);
+                                            Produto p = searchProdutoById(il.getId_produto());
+                                            listTotal-= p.getPreco()*il.getQuantidade();
+                                            upDateListTotal(0.d);
                                             itensList.remove(item);
                                             upDateItensList();
 
@@ -290,6 +295,42 @@ public class Lista extends AppCompatActivity {
 
     }
 
+    private Produto searchProdutoById(int id){
 
+        Produto produto = null;
+
+        for(Produto p : fullList){
+
+            if(p.getId()==id){
+                produto = p;
+            }
+
+        }
+
+        return produto;
+    }
+
+    public void salvar(View v){
+
+        try{
+            ItensListaDao ild = new ItensListaDao(this.getApplicationContext());
+            ild.salvar(itensList);
+
+            this.l.setTotal(listTotal);
+
+            ListasDao ld = new ListasDao(this.getApplicationContext());
+            ld.editar(this.l);
+
+            Toast.makeText(getApplicationContext(), "Registros salvos com sucesso!", Toast.LENGTH_LONG).show();
+
+            Intent i = new Intent(Lista.this, Home.class);
+            startActivity(i);
+
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Ocorreu um erro ao salvar os registros!", Toast.LENGTH_LONG).show();
+            System.err.println(e.getMessage());
+        }
+
+    }
 
 }
