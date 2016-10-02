@@ -56,8 +56,8 @@ public class ListaProduto extends AppCompatActivity {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ListaProduto.this);
                     alertDialogBuilder.setView(promptView);
 
-                    final TextView nome = (TextView) promptView.findViewById(R.id.txt_nome);
-                    final TextView preco = (TextView) promptView.findViewById(R.id.txt_InfoProduto_preco);
+                    final TextView nome = (TextView) promptView.findViewById(R.id.txt_InfoLista_nome);
+                    final TextView preco = (TextView) promptView.findViewById(R.id.txt_InfoLista_total);
                     final TextView descricao = (TextView) promptView.findViewById(R.id.txt_InfoProduto_descricao);
 
 

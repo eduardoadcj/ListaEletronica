@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Nome"
-        android:id="@+id/txt_nome"
+        android:id="@+id/txt_InfoLista_nome"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
@@ -19,7 +19,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Preço:"
         android:id="@+id/txt_preco"
-        android:layout_below="@+id/txt_nome"
+        android:layout_below="@+id/txt_InfoLista_nome"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"

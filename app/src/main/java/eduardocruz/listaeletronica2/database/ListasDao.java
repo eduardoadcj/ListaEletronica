@@ -2,7 +2,10 @@ package eduardocruz.listaeletronica2.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
 
 import eduardocruz.listaeletronica2.entidades.Listas;
 
@@ -56,6 +59,40 @@ public class ListasDao {
 
         db.update("listas",valores,where,null);
         db.close();
+
+    }
+
+    public ArrayList<Listas> listar(){
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "SELECT * FROM listas";
+        Cursor cursor = db.rawQuery(sql,null);
+        ArrayList<Listas> list = new ArrayList();
+
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+
+            for (int i =0;i<cursor.getCount();i++){
+                Listas l = new Listas();
+
+                l.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                l.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+                l.setTotal(cursor.getDouble(cursor.getColumnIndex("total")));
+                list.add(l);
+
+                cursor.moveToNext();
+            }
+
+        }
+
+        for(Listas l : list){
+
+            System.out.println(l.getId()+" - "+l.getNome());
+
+        }
+
+        db.close();
+        return list;
 
     }
 

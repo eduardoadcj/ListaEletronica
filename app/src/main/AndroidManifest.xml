@@ -11,12 +11,14 @@
         <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Lista" />
         <activity android:name=".CadastroProduto" />
-        <activity android:name=".ListaProduto"></activity>
+        <activity android:name=".ListaProduto" />
+        <activity android:name=".ListaListas"></activity>
     </application>
 
 </manifest>

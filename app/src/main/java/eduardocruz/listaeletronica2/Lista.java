@@ -3,22 +3,17 @@ package eduardocruz.listaeletronica2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -98,7 +93,7 @@ public class Lista extends AppCompatActivity {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Lista.this);
                     alertDialogBuilder.setView(promptView);
 
-                    final TextView nome = (TextView) promptView.findViewById(R.id.txt_nome);
+                    final TextView nome = (TextView) promptView.findViewById(R.id.txt_InfoLista_nome);
                     final TextView preco = (TextView) promptView.findViewById(R.id.txt_preco);
                     final TextView descricao = (TextView) promptView.findViewById(R.id.txt_descricao);
                     final EditText quantidade = (EditText) promptView.findViewById(R.id.edittext_quantidade);

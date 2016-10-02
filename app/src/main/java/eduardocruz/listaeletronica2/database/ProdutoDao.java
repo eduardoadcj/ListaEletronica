@@ -157,6 +157,13 @@ public class ProdutoDao {
 
     }
 
+    public ArrayList<Produto> listarByArrayId(int[] id){
+
+
+
+        return null;
+    }
+
 
     //https://www.youtube.com/watch?v=B5CeH1EZzi4
 

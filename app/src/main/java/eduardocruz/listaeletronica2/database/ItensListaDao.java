@@ -3,8 +3,10 @@ package eduardocruz.listaeletronica2.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import eduardocruz.listaeletronica2.entidades.ItensLista;
@@ -39,6 +41,36 @@ public class ItensListaDao {
 
         }
         db.close();
+
+    }
+
+    public ArrayList<ItensLista> searchItensByListId(int id){
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sql = "SELECT * FROM itens_lista WHERE id_lista='"+id+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        ArrayList<ItensLista> list = new ArrayList();
+
+
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+
+            for (int i =0;i<cursor.getCount();i++){
+                ItensLista il = new ItensLista();
+
+                il.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                il.setId_lista(cursor.getInt(cursor.getColumnIndex("id_lista")));
+                il.setId_produto(cursor.getInt(cursor.getColumnIndex("id_produto")));
+                il.setQuantidade(cursor.getDouble(cursor.getColumnIndex("quantidade")));
+                list.add(il);
+
+                cursor.moveToNext();
+            }
+
+        }
+
+        db.close();
+        return list;
 
     }
 
