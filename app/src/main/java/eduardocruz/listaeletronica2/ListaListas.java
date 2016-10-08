@@ -10,18 +10,24 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import eduardocruz.listaeletronica2.adapters.ItensProdutoAdapterListView;
 import eduardocruz.listaeletronica2.adapters.ListasAdapterListView;
+import eduardocruz.listaeletronica2.database.ItensListaDao;
 import eduardocruz.listaeletronica2.database.ListasDao;
+import eduardocruz.listaeletronica2.database.ProdutoDao;
+import eduardocruz.listaeletronica2.entidades.ItensLista;
 import eduardocruz.listaeletronica2.entidades.Listas;
+import eduardocruz.listaeletronica2.entidades.Produto;
 
 public class ListaListas extends AppCompatActivity {
 
     ListView listView;
     ArrayList<Listas> list;
+    ArrayList<Produto> produtos;
     ListasAdapterListView adapter;
 
     @Override
@@ -31,7 +37,14 @@ public class ListaListas extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listaListas_listview);
 
+        try{
 
+            ProdutoDao pd = new ProdutoDao(getApplicationContext());
+            produtos = pd.listar();
+
+        }catch(Exception e){
+            System.err.println("Erro ao pegar os dados dos produtos cadastrados");
+        }
 
         try{
 
@@ -59,22 +72,42 @@ public class ListaListas extends AppCompatActivity {
 
                     //fazer a listview funcionar aqui
 
+                    ItensListaDao ild = new ItensListaDao(getApplicationContext());
 
+                    ArrayList<ItensLista> itensList = ild.searchItensByListId(lista.getId());
+
+                    ItensProdutoAdapterListView ipalv = new ItensProdutoAdapterListView(getApplicationContext(),produtos,itensList);
+
+                    lv.setAdapter(ipalv);
 
                     AlertDialog.Builder fechar = alertDialogBuilder.setCancelable(false)
-                            .setPositiveButton("Adicionar à lista", new DialogInterface.OnClickListener() {
+                            .setNeutralButton("Excluir", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
 
-                                    //caso o botao Ok seja selecionado
+                                    ItensListaDao ild = new ItensListaDao(getApplicationContext());
 
+                                    if(ild.deleteByListId(lista.getId())){
+
+                                        ListasDao ld = new ListasDao(getApplicationContext());
+                                        ld.deleteList(lista.getId());
+
+                                        Toast.makeText(getApplicationContext(), "Registro excluido com sucesso!", Toast.LENGTH_LONG).show();
+
+                                        upDateList();
+
+
+                                    }else{
+
+                                        Toast.makeText(getApplicationContext(), "Erro ao excluir o registro!", Toast.LENGTH_LONG).show();
+                                        upDateList();
+
+                                    }
 
                                 }
                             })
-                            .setNegativeButton("Fechar",
+                            .setPositiveButton("Fechar",
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
-
-                                            //caso o botao cancelar seja selecionado
 
                                             dialog.cancel();//cancelar operacao
 

@@ -74,5 +74,22 @@ public class ItensListaDao {
 
     }
 
+    public boolean deleteByListId(int id){
+
+        System.out.println("Esse daki q é o id ó:"+id);
+        db = dbHelper.getWritableDatabase();
+
+        try {
+            String where = "id_lista=" + id;
+            db.delete("itens_lista", where, null);
+            db.close();
+            return true;
+        }catch(Exception e){
+            db.close();
+            return false;
+        }
+
+    }
+
 
 }

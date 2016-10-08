@@ -96,4 +96,14 @@ public class ListasDao {
 
     }
 
+    public void deleteList(int id){
+
+        System.out.println("Esse daki q é o id ó:"+id);
+        db = dbHelper.getWritableDatabase();
+        String where = "id="+id;
+        db.delete("listas",where,null);
+        db.close();
+
+    }
+
 }

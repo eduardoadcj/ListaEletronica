@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
+import eduardocruz.listaeletronica2.entidades.ItensLista;
 import eduardocruz.listaeletronica2.entidades.Produto;
 
 public class ProdutoDao {
@@ -156,14 +157,6 @@ public class ProdutoDao {
         db.close();
 
     }
-
-    public ArrayList<Produto> listarByArrayId(int[] id){
-
-
-
-        return null;
-    }
-
 
     //https://www.youtube.com/watch?v=B5CeH1EZzi4
 
