@@ -15,63 +15,50 @@
         android:text="Nova lista"
         android:id="@+id/button"
         android:onClick="newLista"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:background="@color/colorBackgroundButton"
         android:textColor="@android:color/white"
-        android:textSize="32px"
-        />
+        android:textSize="16dp"
+        android:drawableTop="@drawable/add_icon"
+        android:drawablePadding="-5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="listas salvas"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:text="listas"
         android:id="@+id/button2"
         android:background="@color/colorBackgroundButton"
         android:textColor="@android:color/white"
-        android:textSize="32px"
-        android:layout_below="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:onClick="listarListas"/>
+        android:textSize="16dp"
+        android:onClick="listarListas"
+        android:drawableTop="@drawable/listas_icon"
+        android:drawablePadding="-10dp"
+        android:paddingTop="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="produtos cadastrados"
+        android:layout_width="172.5dp"
+        android:layout_height="180dp"
+        android:text="produtos"
         android:id="@+id/button3"
         android:background="@color/colorBackgroundButton"
         android:textColor="@android:color/white"
-        android:textSize="32px"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/button2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="listarProdutos"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="instruções"
-        android:id="@+id/button4"
-        android:background="@color/colorBackgroundButton"
-        android:textColor="@android:color/white"
-        android:textSize="32px"
-        android:layout_above="@+id/button5"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="23dp" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="configuracões"
-        android:id="@+id/button5"
-        android:background="@color/colorBackgroundButton"
-        android:textColor="@android:color/white"
-        android:textSize="32px"
+        android:textSize="16dp"
+        android:onClick="listarProdutos"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:drawableTop="@drawable/produto_icon"
+        android:drawablePadding="-10dp"
+        android:paddingTop="25dp"/>
+
+
+
 
 </RelativeLayout>
