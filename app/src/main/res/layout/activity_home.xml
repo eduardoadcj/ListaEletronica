@@ -16,7 +16,7 @@
         android:id="@+id/button"
         android:onClick="newLista"
         android:background="@color/colorBackgroundButton"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorTextButton"
         android:textSize="16dp"
         android:drawableTop="@drawable/add_icon"
         android:drawablePadding="-5dp"
@@ -32,7 +32,7 @@
         android:text="listas"
         android:id="@+id/button2"
         android:background="@color/colorBackgroundButton"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorTextButton"
         android:textSize="16dp"
         android:onClick="listarListas"
         android:drawableTop="@drawable/listas_icon"
@@ -48,7 +48,7 @@
         android:text="produtos"
         android:id="@+id/button3"
         android:background="@color/colorBackgroundButton"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorTextButton"
         android:textSize="16dp"
         android:onClick="listarProdutos"
         android:layout_alignParentBottom="true"
@@ -57,8 +57,6 @@
         android:drawableTop="@drawable/produto_icon"
         android:drawablePadding="-10dp"
         android:paddingTop="25dp"/>
-
-
 
 
 </RelativeLayout>
